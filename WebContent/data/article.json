@@ -1,0 +1,7 @@
+{
+    success: true,
+    articles: [
+        {id: 1, title: 'Ed',    content: 'ed@sencha.com'},
+        {id: 2, title: 'Tommy', content: 'tommy@sencha.com'}
+    ]
+}
