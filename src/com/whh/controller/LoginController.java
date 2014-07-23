@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.whh.dal.UserDAL;
+import com.whh.dao.UserDao;
 import com.whh.model.User;
 
 /**
@@ -47,7 +47,7 @@ public class LoginController extends HttpServlet {
 		user.setLoginid(request.getParameter("loginid"));
 		user.setPassword(request.getParameter("password"));
 
-		if (new UserDAL().check(user)) {
+		if (new UserDao().check(user)) {
 
 			request.getSession().setAttribute("user", user);
 			RequestDispatcher view = request
