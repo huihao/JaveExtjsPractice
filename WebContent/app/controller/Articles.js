@@ -26,8 +26,14 @@ Ext.define('AM.controller.Articles', {
     		},
     		'articleedit button[action=save]': {
                 click: this.updateArticle
+            },
+            'articlelist button[id=add]':{
+            	click:this.addArticle
             }
     	});
+    },
+    addArticle:function(){
+    	Ext.create('AM.view.article.Edit').show();
     },
     editArticle: function(grid, record) {
         var edit = Ext.create('AM.view.article.Edit').show();
@@ -37,11 +43,15 @@ Ext.define('AM.controller.Articles', {
     updateArticle: function(button) {
         var win    = button.up('window'),
             form   = win.down('form'),
-            record = form.getRecord(),
             values = form.getValues();
-
+        var record=Ext.create('AM.model.Article');
+        
+        var store = new AM.store.Articles({  
+        });  
+        
         record.set(values);
+        store.add(record);
         win.close();
-        this.getArticlesStore().sync();
+        store.sync();
     }
 });

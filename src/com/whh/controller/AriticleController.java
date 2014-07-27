@@ -101,6 +101,10 @@ public class AriticleController extends HttpServlet {
 		final JSONObject jsonobj = (JSONObject) obj;
 		final ArticleDao dao = new ArticleDao();
 		Article a = dao.find(Integer.parseInt(jsonobj.get("id").toString()));
+		if(a==null)
+		{
+			a= new Article();
+		}
 		a.setContent(jsonobj.get("content").toString());
 		a.setTitle(jsonobj.get("title").toString());
 		dao.update(a);
