@@ -13,6 +13,10 @@ Ext.define('AM.controller.Articles', {
                ref: 'articlesPanel',
                selector: 'panel'
            }
+           ,{
+        	   ref:'articlelist',
+        	   selector:'articlelist'
+           }
        ],
 
     views: [
@@ -29,11 +33,16 @@ Ext.define('AM.controller.Articles', {
             },
             'articlelist button[id=add]':{
             	click:this.addArticle
+            },
+            'articlelist button[id=delete]':{
+            	click:this.deleteArticle
             }
     	});
     },
     addArticle:function(){
-    	Ext.create('AM.view.article.Edit').show();
+    	var add=Ext.create('AM.view.article.Edit').show();
+    	var record=Ext.create('AM.model.Article');
+    	add.down('form').loadRecord(record);
     },
     editArticle: function(grid, record) {
         var edit = Ext.create('AM.view.article.Edit').show();
@@ -43,15 +52,17 @@ Ext.define('AM.controller.Articles', {
     updateArticle: function(button) {
         var win    = button.up('window'),
             form   = win.down('form'),
+            record = form.getRecord(),
             values = form.getValues();
-        var record=Ext.create('AM.model.Article');
         
-        var store = new AM.store.Articles({  
-        });  
-        
+        console.log(values);
         record.set(values);
-        store.add(record);
         win.close();
-        store.sync();
+        this.getArticlesStore().insert(0,record);
+    },
+    deleteArticle:function(){
+
+    	var record = this.getArticlelist().getSelectionModel().getLastSelected();
+    	console.log(record.data.id);
     }
 });

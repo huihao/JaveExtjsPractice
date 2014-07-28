@@ -11,7 +11,8 @@ Ext.define('AM.view.article.List' ,{
 
             columns: [
                       {header: 'Title',  dataIndex: 'title',  flex: 1},
-                      {header: 'Content', dataIndex: 'content', flex: 1}
+                      {header: 'Content', dataIndex: 'content', flex: 1},
+                      {header: 'Id', dataIndex: 'id', flex: 1}
                   ],
             dockedItems:[{
                 xtype: 'toolbar',
