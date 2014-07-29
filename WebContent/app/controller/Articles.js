@@ -63,6 +63,6 @@ Ext.define('AM.controller.Articles', {
     deleteArticle:function(){
 
     	var record = this.getArticlelist().getSelectionModel().getLastSelected();
-    	console.log(record.data.id);
+        this.getArticlesStore().remove(record);
     }
 });

@@ -3,6 +3,7 @@ package com.whh.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -86,7 +87,8 @@ public class AriticleController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/html;charset=UTF-8");
-
+		
+		String action = request.getParameter("action");
 		String acceptjson = "";
 		final BufferedReader br = new BufferedReader(new InputStreamReader(
 				(ServletInputStream) request.getInputStream(), "utf-8"));
@@ -109,11 +111,26 @@ public class AriticleController extends HttpServlet {
 		{
 			a= new Article();
 		}
-		 
 		a.setContent(jsonobj.get("content").toString());
 		a.setTitle(jsonobj.get("title").toString());
-		dao.update(a);
+		if(action.equalsIgnoreCase("jsonedit"))
+		{
+			dao.update(a);
 
-		response.getWriter().write("success");
+			response.getWriter().write("success");
+		}else if(action.equalsIgnoreCase("jsondelete")){
+			
+			dao.delete(a.getId());
+		}else if(action.equalsIgnoreCase("jsonadd")){
+			
+			try {
+				dao.add(a);
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
 	}
 }

@@ -8,7 +8,8 @@ Ext.define('AM.store.Articles', {
         api: {
             read: 'article?action=jsonlist',
             update: 'article?action=jsonedit',
-            create:'article?action=jsonedit'
+            create:'article?action=jsonadd',
+            destroy:'article?action=jsondelete'
         },
         reader: {
             type: 'json',
