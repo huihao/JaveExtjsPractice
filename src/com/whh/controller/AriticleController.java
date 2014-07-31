@@ -116,7 +116,6 @@ public class AriticleController extends HttpServlet {
 		if(action.equalsIgnoreCase("jsonedit"))
 		{
 			dao.update(a);
-
 			response.getWriter().write("success");
 		}else if(action.equalsIgnoreCase("jsondelete")){
 			

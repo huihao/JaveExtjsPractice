@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script src="ext/bootstrap.js"></script>
-<script src="ext/local/ext-lang-zh_CN.js"></script>
 <script src="app.js"></script>
 <link  rel="stylesheet" type="text/css" href="ext/resources/css/ext-all.css">
 </head>
