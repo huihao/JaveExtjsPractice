@@ -13,7 +13,7 @@ Ext.define('AM.controller.Articles', {
            {
                ref: 'articlesPanel',
                selector: 'panel'
-           }
+           }	
            ,{
         	   ref:'articlelist',
         	   selector:'articlelist'
@@ -23,11 +23,12 @@ Ext.define('AM.controller.Articles', {
     views: [
         'List@AM.view.article',
         'Edit@AM.view.article',
-        'TreePanel@AM.view'
+        'TreePanel@AM.view',
+        'TabPanel@AM.view'
     ],
     init:function (){
     	this.control({
-    		'viewport > articlelist':{
+    		'viewport tabPanel > articlelist':{
     			itemdblclick:this.editArticle
     		},
     		'articleedit button[action=save]': {

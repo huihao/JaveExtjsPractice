@@ -4,9 +4,7 @@ Ext.define('AM.view.Viewport', {
     layout: 'border',
     items: [{
 	    	region: 'center',
-	        xtype: 'articlelist' ,
-	        title: 'ArticleList'
-
+	        xtype: 'tabPanel' 
         	},
           {
         	 region: 'west',
