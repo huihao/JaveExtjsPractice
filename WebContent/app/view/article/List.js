@@ -14,14 +14,6 @@ Ext.define('AM.view.article.List' ,{
                       {header: 'Content', dataIndex: 'content', flex: 1},
                       {header: 'Id', dataIndex: 'id', flex: 1}
                   ],
-            dockedItems:[{
-                xtype: 'toolbar',
-                dock: 'top',
-                items: [{
-                    text: 'Add',
-                    action: 'add'
-                }]
-            }],
             tbar :[  
                    {xtype:'button',text:'add',id:'add'},  
                    {xtype:'button',id:'delete',text:'delete'},  

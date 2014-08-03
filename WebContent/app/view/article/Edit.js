@@ -17,6 +17,12 @@ Ext.define('AM.view.article.Edit',{
          style: 'background-color: #fff;',
 
          items: [
+                 {
+                     xtype: 'textfield',
+                     name : 'id',
+                     fieldLabel: 'id',
+                     disabled:'true'
+                 },
              {
                  xtype: 'textfield',
                  name : 'title',

@@ -2,7 +2,8 @@ Ext.define('AM.controller.Articles', {
     extend: 'Ext.app.Controller',
 
     stores: [
-        'Articles@AM.store'
+        'Articles@AM.store',
+        'tree@AM.store'
     ],
 
     models: [
@@ -21,7 +22,8 @@ Ext.define('AM.controller.Articles', {
 
     views: [
         'List@AM.view.article',
-        'Edit@AM.view.article'
+        'Edit@AM.view.article',
+        'TreePanel@AM.view'
     ],
     init:function (){
     	this.control({
@@ -54,11 +56,15 @@ Ext.define('AM.controller.Articles', {
             form   = win.down('form'),
             record = form.getRecord(),
             values = form.getValues();
-        
-        console.log(values);
         record.set(values);
         win.close();
-        this.getArticlesStore().insert(0,record);
+        if(record.data.id!=undefined){
+        	this.getArticlesStore().sync();
+        }
+        else{
+        	 this.getArticlesStore().insert(0,record);
+        }
+       
     },
     deleteArticle:function(){
 
