@@ -3,6 +3,7 @@ Ext.application({
     autoCreateViewport: true,
     appFolder: 'app', 
     controllers: [
-        'Articles'
+        'Articles',
+        'User'
     ]
 });

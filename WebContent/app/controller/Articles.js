@@ -17,6 +17,10 @@ Ext.define('AM.controller.Articles', {
            ,{
         	   ref:'articlelist',
         	   selector:'articlelist'
+           },
+           {
+        	   ref:'tabPanel',
+        	   selector:'tabPanel'
            }
        ],
 
@@ -41,7 +45,8 @@ Ext.define('AM.controller.Articles', {
             	click:this.deleteArticle
             },
             'mytreepanel':{
-            	beforeload:this.treeExpend
+            	beforeload:this.treeExpend,
+            	cellclick:this.treeClick
             }
     	});
     },
@@ -77,5 +82,21 @@ Ext.define('AM.controller.Articles', {
     },
     treeExpend:function(store,operation){
     	store.proxy.extraParams.id=operation.node.data.id;
+    },
+    treeClick:function (view, record, item, index){
+    	var id=index.data.id;
+    	var tp=this.getTabPanel();
+    	if(index.data.leaf==1){
+    		var newtp=this.getArticlelist();
+    		if(newtp==null)
+			{
+	    	    newtp=tp.add({
+	    		title:"articles",
+	    		xtype:'articlelist'
+	    	})}
+	    	newtp.show();
+	    }
+    	
     }
+    
 });

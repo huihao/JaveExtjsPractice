@@ -8,7 +8,7 @@ Ext.define('AM.view.article.List' ,{
     initComponent: function() {
         Ext.apply(this, {
             store: 'Articles',
-
+            closable:'true',
             columns: [
                       {header: 'Title',  dataIndex: 'title',  flex: 1},
                       {header: 'Content', dataIndex: 'content', flex: 1},
@@ -16,8 +16,7 @@ Ext.define('AM.view.article.List' ,{
                   ],
             tbar :[  
                    {xtype:'button',text:'add',id:'add'},  
-                   {xtype:'button',id:'delete',text:'delete'},  
-                   {xtype:'button',text:'edit'},  
+                   {xtype:'button',id:'delete',text:'delete'}
             ]
         });
 

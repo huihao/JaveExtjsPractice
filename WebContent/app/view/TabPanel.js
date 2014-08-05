@@ -13,7 +13,7 @@ Ext.define('AM.view.TabPanel',{
               id: 'HomePage',
               title: 'Home',
               layout: 'fit',
-              xtype: 'articlelist'
+              xtype: 'userlist'
             }]
         });
         this.callParent(arguments);
