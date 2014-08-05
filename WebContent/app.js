@@ -4,6 +4,7 @@ Ext.application({
     appFolder: 'app', 
     controllers: [
         'Articles',
-        'User'
+        'User',
+        'Menu'
     ]
 });

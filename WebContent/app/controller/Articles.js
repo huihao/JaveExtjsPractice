@@ -2,8 +2,7 @@ Ext.define('AM.controller.Articles', {
     extend: 'Ext.app.Controller',
 
     stores: [
-        'Articles@AM.store',
-        'tree@AM.store'
+        'Articles@AM.store'
     ],
 
     models: [
@@ -27,7 +26,6 @@ Ext.define('AM.controller.Articles', {
     views: [
         'List@AM.view.article',
         'Edit@AM.view.article',
-        'TreePanel@AM.view',
         'TabPanel@AM.view'
     ],
     init:function (){
@@ -43,10 +41,6 @@ Ext.define('AM.controller.Articles', {
             },
             'articlelist button[id=delete]':{
             	click:this.deleteArticle
-            },
-            'mytreepanel':{
-            	beforeload:this.treeExpend,
-            	cellclick:this.treeClick
             }
     	});
     },
@@ -79,24 +73,5 @@ Ext.define('AM.controller.Articles', {
 
     	var record = this.getArticlelist().getSelectionModel().getLastSelected();
         this.getArticlesStore().remove(record);
-    },
-    treeExpend:function(store,operation){
-    	store.proxy.extraParams.id=operation.node.data.id;
-    },
-    treeClick:function (view, record, item, index){
-    	var id=index.data.id;
-    	var tp=this.getTabPanel();
-    	if(index.data.leaf==1){
-    		var newtp=this.getArticlelist();
-    		if(newtp==null)
-			{
-	    	    newtp=tp.add({
-	    		title:"articles",
-	    		xtype:'articlelist'
-	    	})}
-	    	newtp.show();
-	    }
-    	
     }
-    
 });
