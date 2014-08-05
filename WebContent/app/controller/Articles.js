@@ -39,6 +39,9 @@ Ext.define('AM.controller.Articles', {
             },
             'articlelist button[id=delete]':{
             	click:this.deleteArticle
+            },
+            'mytreepanel':{
+            	beforeload:this.treeExpend
             }
     	});
     },
@@ -71,5 +74,8 @@ Ext.define('AM.controller.Articles', {
 
     	var record = this.getArticlelist().getSelectionModel().getLastSelected();
         this.getArticlesStore().remove(record);
+    },
+    treeExpend:function(store,operation){
+    	store.proxy.extraParams.id=operation.node.data.id;
     }
 });
