@@ -11,19 +11,19 @@ Ext.define('AM.view.user.List',{
         	 columnLines: true,
         	 selModel: Ext.create('Ext.selection.CheckboxModel'),
         	 columns: [
-        	           { header: 'Name',  dataIndex: 'name',
+        	           { header: 'id',  dataIndex: 'id',
         	        	   editor: {
         	                   xtype: 'textfield',
         	                   allowBlank: false
         	               }
         	           },
-        	           { header: 'Email', dataIndex: 'email', flex: 1 , 
+        	           { header: 'loginid', dataIndex: 'loginid', flex: 1 , 
         	        	    editor: {
         	                xtype: 'textfield',
         	                allowBlank: false
         	            }
         	           },
-        	           { header: 'Phone', dataIndex: 'phone',
+        	           { header: 'password', dataIndex: 'password',
         	        	   editor: {
         	                   xtype: 'textfield',
         	                   allowBlank: false

@@ -1,17 +1,13 @@
 Ext.define('AM.store.User',{
 	extend:'Ext.data.Store',
-	fields:['name', 'email', 'phone'],
-    data:{'items':[
-        { 'name': 'Lisa',  "email":"lisa@simpsons.com",  "phone":"555-111-1224"  },
-        { 'name': 'Bart',  "email":"bart@simpsons.com",  "phone":"555-222-1234" },
-        { 'name': 'Homer', "email":"home@simpsons.com",  "phone":"555-222-1244"  },
-        { 'name': 'Marge', "email":"marge@simpsons.com", "phone":"555-222-1254"  }
-    ]},
+	model: 'AM.model.User',
     proxy: {
-        type: 'memory',
+        type: 'ajax',
+        api: {
+            read: 'user?action=jsonlist',
+        },
         reader: {
-            type: 'json',
-            root: 'items'
+            type: 'json'
         }
     }
 })
