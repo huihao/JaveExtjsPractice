@@ -2,27 +2,27 @@ package com.whh.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
+
 import com.whh.dao.UserDao;
-import com.whh.model.User;
 
 /**
  * Servlet implementation class LoginController
  */
-@WebServlet("/LoginController")
-public class LoginController extends HttpServlet {
+@WebServlet("/UserController")
+public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginController() {
+	public UserController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,6 +34,19 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		  response.setContentType("text/html;charset=UTF-8");
+			
+			String action = request.getParameter("action");
+			System.out.println("userjsonlist");
+			switch (action) {
+			case "jsonlist":
+				JSONArray jsonObject=JSONArray.fromObject(new UserDao().getAll());
+				response.getWriter().write(jsonObject.toString());
+				break;
+	
+			default:
+				break;
+			}
 	}
 
 	/**
@@ -42,20 +55,7 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
-		User user = new User();
-		user.setLoginid(request.getParameter("loginid"));
-		user.setPassword(request.getParameter("password"));
-
-		if (new UserDao().check(user)) {
-
-			request.getSession().setAttribute("user", user);
-			RequestDispatcher view = request
-					.getRequestDispatcher("/views/article/edit.jsp");
-			view.forward(request, response);
-		} else {
-			
-		}
+      
 
 	}
 
